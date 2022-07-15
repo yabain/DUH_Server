@@ -1,0 +1,56 @@
+{
+  "name": "duh-server",
+  "version": "1.0.0",
+  "description": "DoUHave API server",
+  "main": "server.js",
+  "scripts": {
+    "start": "env-cmd -f .env nodemon server.js",
+    "server": "nodemon server.js",
+    "docker": "docker build -t duh-server . && docker run -p 5555:5555 --env-file .env duh-server",
+    "set-vars:dev": "aws s3 cp dev.json s3://douhave-variables-dev/app.json --profile douhave",
+    "set-vars:prod": "aws s3 cp prod.json s3://douhave-variables-prod/app.json --profile douhave",
+    "get-vars:dev": "aws s3 cp s3://douhave-variables-dev/app.json dev.json --profile douhave",
+    "get-vars:prod": "aws s3 cp s3://douhave-variables-prod/app.json prod.json --profile douhave"
+  },
+  "author": "John Best",
+  "license": "MIT",
+  "engines": {
+    "node": "17"
+  },
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.797.0",
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.18.3",
+    "brew": "0.0.8",
+    "cheerio": "^1.0.0-rc.5",
+    "compression": "^1.7.3",
+    "concurrently": "^4.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "http-status": "^1.5.0",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mailchimp-api-v3": "^1.15.0",
+    "mongodb": "^4.3.1",
+    "mongoose": "^6.1.8",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1",
+    "node-fetch": "^2.6.0",
+    "page-metadata-parser": "^1.1.4",
+    "path": "^0.12.7",
+    "puppeteer-core": "^8.0.0",
+    "puppeteer-extra": "^3.1.18",
+    "puppeteer-extra-plugin-stealth": "^2.7.6",
+    "redis": "^3.0.2",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4",
+    "puppeteer": "^8.0.0"
+  }
+}
